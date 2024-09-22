@@ -1,0 +1,165 @@
+การเปรียบเทียบการเขียนโปรแกรมแบบ OOP ด้วยภาษา Java, C++, และ Python
+1. ความเหมือนในการเขียนโปรแกรมแบบ OOP
+การใช้ Class และ Object: ทั้งสามภาษาสนับสนุนการใช้ Class และ Object ซึ่งเป็นพื้นฐานสำคัญของ OOP
+
+Java: เป็นภาษา OOP เต็มรูปแบบ ทุกอย่างใน Java คือ Object และต้องถูกประกาศใน Class
+C++: รองรับทั้งโปรแกรมแบบ Procedural และ OOP แต่ยังคงมีการใช้ Class และ Object เหมือนกับ Java
+Python: Python สนับสนุนการเขียนแบบ OOP อย่างยืดหยุ่นและเข้าใจง่าย โดย Class และ Object ก็เป็นพื้นฐานเหมือนกับภาษาอื่น
+Encapsulation (การห่อหุ้ม): ทั้งสามภาษาสนับสนุนการห่อหุ้มโดยการใช้ Access Modifiers เช่น public, private, และ protected เพื่อควบคุมการเข้าถึงข้อมูลภายใน Class
+
+Java และ C++: ใช้ private, public, และ protected
+Python: ใช้ _ และ __ เพื่อบอกว่าฟังก์ชันหรือแอตทริบิวต์เป็น private แต่ไม่ได้บังคับอย่างชัดเจน
+Inheritance (การสืบทอด): ทั้งสามภาษาสนับสนุนการสืบทอด Class เพื่อให้สามารถนำ Class หนึ่งมาใช้งานและปรับปรุงต่อได้
+
+Java และ C++: การสืบทอดสามารถทำได้แบบ Single และ Multiple Inheritance (C++ รองรับ Multiple Inheritance โดยตรง ส่วน Java ใช้ Interfaces เพื่อเลี่ยงการสืบทอดแบบ Multiple)
+Python: รองรับ Multiple Inheritance ได้โดยตรงเช่นเดียวกับ C++
+2. ความแตกต่างในการเขียนโปรแกรมแบบ OOP
+Syntax (ไวยากรณ์):
+
+Java: มีโครงสร้างที่เข้มงวด ต้องมีการประกาศชนิดของตัวแปรชัดเจน และทุกโปรแกรมเริ่มต้นที่ฟังก์ชัน main()
+C++: คล้ายกับ Java แต่มีความยืดหยุ่นมากกว่าในด้านของการจัดการหน่วยความจำ (การใช้ Pointer)
+Python: มีไวยากรณ์ที่เรียบง่ายและกระชับมากกว่า ไม่จำเป็นต้องประกาศชนิดของตัวแปรล่วงหน้า และมีการเว้นวรรคบรรทัดเพื่อบอกขอบเขตของโค้ดแทนการใช้ปีกกา {}
+Memory Management (การจัดการหน่วยความจำ):
+
+Java: ใช้ Garbage Collector จัดการหน่วยความจำโดยอัตโนมัติ
+C++: นักพัฒนาต้องจัดการหน่วยความจำเองด้วยการใช้ new และ delete
+Python: ใช้ Garbage Collector คล้ายกับ Java แต่มีความยืดหยุ่นมากกว่าในบางแง่มุม
+Multiple Inheritance (การสืบทอดหลายชั้น):
+
+Java: ไม่รองรับ Multiple Inheritance โดยตรง แต่ใช้ Interfaces แทน
+C++: รองรับ Multiple Inheritance ได้โดยตรง
+Python: รองรับ Multiple Inheritance ได้โดยตรง และมีฟังก์ชัน super() ที่ช่วยจัดการกับลำดับการสืบทอด (MRO - Method Resolution Order)
+ตัวอย่างโค้ดสำหรับการคิดเลข (เช่น การบวก, ลบ, คูณ, หาร) ในแต่ละภาษา Java, C++, และ Python:
+
+1. Java
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.println("Choose an operation (+, -, *, /): ");
+        char operator = scanner.next().charAt(0);
+
+        double result;
+
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Error! Division by zero.");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Invalid operator!");
+                return;
+        }
+
+        System.out.println("The result is: " + result);
+    }
+}
+2. C++
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    double num1, num2;
+    char operation;
+
+    cout << "Enter first number: ";
+    cin >> num1;
+
+    cout << "Enter second number: ";
+    cin >> num2;
+
+    cout << "Choose an operation (+, -, *, /): ";
+    cin >> operation;
+
+    double result;
+
+    switch (operation) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+            } else {
+                cout << "Error! Division by zero." << endl;
+                return 1;
+            }
+            break;
+        default:
+            cout << "Invalid operator!" << endl;
+            return 1;
+    }
+
+    cout << "The result is: " << result << endl;
+
+    return 0;
+}
+3. Python
+
+# Calculator
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+operation = input("Choose an operation (+, -, *, /): ")
+
+if operation == '+':
+    result = num1 + num2
+elif operation == '-':
+    result = num1 - num2
+elif operation == '*':
+    result = num1 * num2
+elif operation == '/':
+    if num2 != 0:
+        result = num1 / num2
+    else:
+        print("Error! Division by zero.")
+        exit()
+else:
+    print("Invalid operator!")
+    exit()
+
+print(f"The result is: {result}")
+ความแตกต่างของโค้ดในทั้งสามภาษา:
+Syntax (ไวยากรณ์):
+
+Java: ต้องมีการประกาศตัวแปรและประเภทของตัวแปรชัดเจน (double num1), และทุกโปรแกรมเริ่มต้นที่ main ในการรันโปรแกรม
+C++: คล้าย Java ในแง่การประกาศตัวแปรและฟังก์ชัน main() แต่ไม่มีการบังคับใช้ Scanner สำหรับรับค่าจากผู้ใช้เหมือน Java
+Python: มีโครงสร้างที่ง่ายและกระชับกว่า ไม่ต้องประกาศประเภทตัวแปรล่วงหน้า และไม่มีการใช้ปีกกา {} หรือเครื่องหมาย ; ในการปิดคำสั่ง
+การจัดการการรับข้อมูลจากผู้ใช้:
+
+Java: ใช้ Scanner เพื่อรับข้อมูลจากผู้ใช้
+C++: ใช้ cin และ cout ในการรับและแสดงผลข้อมูล
+Python: ใช้ฟังก์ชัน input() ในการรับข้อมูลจากผู้ใช้
+การตรวจสอบเงื่อนไข:
+
+Java และ C++: ใช้ switch เพื่อจัดการกับการเลือกเครื่องหมายการคำนวณ และใช้ if สำหรับการตรวจสอบการหารด้วย 0
+Python: ใช้ if-elif ในการตรวจสอบเครื่องหมายการคำนวณและการจัดการเงื่อนไข
